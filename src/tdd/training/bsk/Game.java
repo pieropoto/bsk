@@ -22,7 +22,7 @@ public class Game {
 	public void addFrame(Frame frame) throws BowlingException {
 		if(frames.size()<10) {
 			frames.add(frame);
-		}
+		}else throw new BowlingException();
 	}
 
 	/**
@@ -84,9 +84,13 @@ public class Game {
 	 */
 	public int calculateScore() throws BowlingException {
 		int score = 0;
+		int i = 0;
 		for(Frame frame: frames) {
-			score += frame.getFirstThrow();
-			score += frame.getSecondThrow();
+			i++;
+			if(frame.isSpare() && i<frames.size()) {
+				frame.setBonus(frames.get(i).getFirstThrow());
+			}
+			score += frame.getScore();
 		}
 		return score;	
 	}

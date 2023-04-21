@@ -24,4 +24,30 @@ public class FrameTest {
 		Frame frame = new Frame(7, 2);
 		assertEquals(9, frame.getScore());
 	}
+	
+	@Test
+	public void testGetBonus() throws Exception{
+		Frame frame = new Frame(7, 3);
+		frame.setBonus(8);
+		assertEquals(8, frame.getBonus());
+	}
+	
+	@Test
+	public void testIsSpare() throws Exception{
+		Frame frame = new Frame(7, 3);
+		assertTrue(frame.isSpare());
+	}
+	
+	@Test
+	public void testIsNotSpare() throws Exception{
+		Frame frame = new Frame(7, 2);
+		assertFalse(frame.isSpare());
+	}
+	
+	@Test
+	public void testGetScoreSpare() throws Exception{
+		Frame frame = new Frame(7, 3);
+		frame.setBonus(8);
+		assertEquals(18, frame.getScore());
+	}
 }

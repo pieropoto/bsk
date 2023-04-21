@@ -4,6 +4,7 @@ public class Frame {
 	
 	private int firstThrow;
 	private int secondThrow;
+	private int bonus;
 
 	/**
 	 * It initializes a frame given the pins knocked down in the first and second
@@ -42,7 +43,7 @@ public class Frame {
 	 * @param bonus The bonus.
 	 */
 	public void setBonus(int bonus) {
-		// To be implemented
+		this.bonus = bonus;
 	}
 
 	/**
@@ -51,8 +52,7 @@ public class Frame {
 	 * @return The bonus.
 	 */
 	public int getBonus() {
-		// To be implemented
-		return 0;
+		return bonus;
 	}
 
 	/**
@@ -61,6 +61,9 @@ public class Frame {
 	 * @return The score
 	 */
 	public int getScore() {
+		if(this.isSpare()) {
+			return firstThrow+secondThrow+bonus;
+		}else
 		return firstThrow+secondThrow;
 	}
 
@@ -80,7 +83,9 @@ public class Frame {
 	 * @return <true> if spare, <false> otherwise.
 	 */
 	public boolean isSpare() {
-		// To be implemented
+		if(firstThrow+secondThrow == 10) {
+			return true;
+		}
 		return false;
 	}
 	
