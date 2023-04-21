@@ -61,7 +61,7 @@ public class Frame {
 	 * @return The score
 	 */
 	public int getScore() {
-		if(this.isSpare()) {
+		if(this.isSpare() || this.isStrike()) {
 			return firstThrow+secondThrow+bonus;
 		}else
 		return firstThrow+secondThrow;
@@ -73,7 +73,9 @@ public class Frame {
 	 * @return <true> if strike, <false> otherwise.
 	 */
 	public boolean isStrike() {
-		// To be implemented
+		if(firstThrow == 10) {
+			return true;
+		}
 		return false;
 	}
 
@@ -83,7 +85,7 @@ public class Frame {
 	 * @return <true> if spare, <false> otherwise.
 	 */
 	public boolean isSpare() {
-		if(firstThrow+secondThrow == 10) {
+		if(firstThrow+secondThrow == 10 && firstThrow!=10) {
 			return true;
 		}
 		return false;

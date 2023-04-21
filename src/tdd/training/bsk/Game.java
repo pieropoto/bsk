@@ -89,6 +89,9 @@ public class Game {
 			i++;
 			if(frame.isSpare() && i<frames.size()) {
 				frame.setBonus(frames.get(i).getFirstThrow());
+			}else
+			if(frame.isStrike() && i<frames.size()) {
+				frame.setBonus(frames.get(i).getFirstThrow() + frames.get(i).getSecondThrow());
 			}
 			score += frame.getScore();
 		}
