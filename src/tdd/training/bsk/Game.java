@@ -92,10 +92,13 @@ public class Game {
 			}else
 			if(frame.isStrike() && i<frames.size()) {
 				frame.setBonus(frames.get(i).getFirstThrow() + frames.get(i).getSecondThrow());
+				if(frames.get(i).isStrike()) {
+					frame.setBonus(frame.getBonus() + frames.get(i+1).getFirstThrow());
+				}
 			}
 			score += frame.getScore();
 		}
-		return score;	
+		return score;
 	}
 
 }

@@ -50,4 +50,23 @@ public class FrameTest {
 		frame.setBonus(8);
 		assertEquals(18, frame.getScore());
 	}
+	
+	@Test
+	public void testIsStrike() throws Exception{
+		Frame frame = new Frame(10, 0);
+		assertTrue(frame.isStrike());
+	}
+	
+	@Test
+	public void testIsNotStrike() throws Exception{
+		Frame frame = new Frame(9, 0);
+		assertFalse(frame.isStrike());
+	}
+	
+	@Test
+	public void testGetScoreStrike() throws Exception{
+		Frame frame = new Frame(10, 0);
+		frame.setBonus(9);
+		assertEquals(19, frame.getScore());
+	}
 }
