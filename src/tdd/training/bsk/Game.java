@@ -1,12 +1,16 @@
 package tdd.training.bsk;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
 
+	List<Frame> frames;
 	/**
 	 * It initializes an empty bowling game.
 	 */
 	public Game() {
-		// To be implemented
+		frames = new ArrayList<Frame>();
 	}
 
 	/**
@@ -16,7 +20,9 @@ public class Game {
 	 * @throws BowlingException
 	 */
 	public void addFrame(Frame frame) throws BowlingException {
-		// To be implemented
+		if(frames.size()<10) {
+			frames.add(frame);
+		}
 	}
 
 	/**
@@ -27,8 +33,7 @@ public class Game {
 	 * @throws BowlingException
 	 */
 	public Frame getFrameAt(int index) throws BowlingException {
-		// To be implemented
-		return null;	
+		return frames.get(index);	
 	}
 
 	/**
@@ -78,8 +83,12 @@ public class Game {
 	 * @throws BowlingException
 	 */
 	public int calculateScore() throws BowlingException {
-		// To be implemented
-		return 0;	
+		int score = 0;
+		for(Frame frame: frames) {
+			score += frame.getFirstThrow();
+			score += frame.getSecondThrow();
+		}
+		return score;	
 	}
 
 }
