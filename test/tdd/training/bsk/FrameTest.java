@@ -19,4 +19,9 @@ public class FrameTest {
 		assertEquals(2, frame.getSecondThrow());
 	}
 
+	@Test
+	public void testGetScore() throws Exception{
+		Frame frame = new Frame(7, 2);
+		assertEquals(9, frame.getScore());
+	}
 }
