@@ -8,8 +8,15 @@ import org.junit.Test;
 public class FrameTest {
 
 	@Test
-	public void test() throws Exception{
-		fail("Not yet implemented");
+	public void testGetFirtsThrow() throws Exception{
+		Frame frame = new Frame(7, 2);
+		assertEquals(7, frame.getFirstThrow());
+	}
+	
+	@Test
+	public void testGetSecondThrow() throws Exception{
+		Frame frame = new Frame(7, 2);
+		assertEquals(2, frame.getSecondThrow());
 	}
 
 }
