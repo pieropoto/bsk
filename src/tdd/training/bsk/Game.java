@@ -5,7 +5,10 @@ import java.util.List;
 
 public class Game {
 
-	List<Frame> frames;
+	private List<Frame> frames;
+	private int firstBonusThrow;
+	private int secondBonusThrow;
+	
 	/**
 	 * It initializes an empty bowling game.
 	 */
@@ -43,7 +46,7 @@ public class Game {
 	 * @throws BowlingException
 	 */
 	public void setFirstBonusThrow(int firstBonusThrow) throws BowlingException {
-		// To be implemented
+		this.firstBonusThrow = firstBonusThrow;
 	}
 
 	/**
@@ -53,7 +56,7 @@ public class Game {
 	 * @throws BowlingException
 	 */
 	public void setSecondBonusThrow(int secondBonusThrow) throws BowlingException {
-		// To be implemented
+		this.secondBonusThrow = secondBonusThrow;
 	}
 
 	/**
@@ -62,8 +65,7 @@ public class Game {
 	 * @return The first bonus throw.
 	 */
 	public int getFirstBonusThrow() {
-		// To be implemented
-		return 0;
+		return firstBonusThrow;
 	}
 
 	/**
@@ -72,8 +74,7 @@ public class Game {
 	 * @return The second bonus throw.
 	 */
 	public int getSecondBonusThrow() {
-		// To be implemented
-		return 0;
+		return secondBonusThrow;
 	}
 
 	/**
@@ -92,11 +93,19 @@ public class Game {
 			}else
 			if(frame.isStrike() && i<frames.size()) {
 				frame.setBonus(frames.get(i).getFirstThrow() + frames.get(i).getSecondThrow());
-				if(frames.get(i).isStrike()) {
+				if(frames.get(i).isStrike() && i<frames.size()-1) {
 					frame.setBonus(frame.getBonus() + frames.get(i+1).getFirstThrow());
+				}else if(frames.get(i).isStrike() && i==frames.size()-1) {
+					frame.setBonus(frame.getBonus() + firstBonusThrow);
 				}
 			}
 			score += frame.getScore();
+		}
+		if(frames.get(9).isSpare()) {
+			score += firstBonusThrow;
+		}else if(frames.get(9).isStrike()) {
+			score += firstBonusThrow;
+			score += secondBonusThrow;
 		}
 		return score;
 	}
